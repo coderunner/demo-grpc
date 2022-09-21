@@ -19,4 +19,3 @@ def add_book(title, author):
 
 if __name__ == '__main__':
     get_books()
-    add_book('t', 'i')
