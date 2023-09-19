@@ -9,22 +9,24 @@ import books_pb2_grpc
 import uuid
 
 BOOKS = [
-    books_pb2.Book(id = str(uuid.uuid4()), title = 'Un livre', author = 'U. Auteur'),
-    books_pb2.Book(id = str(uuid.uuid4()), title = 'Un autre livre', author = 'U. A. Auteur')
-    ]
+    books_pb2.Book(id=str(uuid.uuid4()), title='Un livre', author='U. Auteur'),
+    books_pb2.Book(id=str(uuid.uuid4()), title='Un autre livre',
+                   author='U. A. Auteur')
+]
+
 
 class BooksService(books_pb2_grpc.BooksService):
 
     def GetBooks(self, request, context):
-        return books_pb2.BooksResponse(books = BOOKS)
+        return books_pb2.BooksResponse(books=BOOKS)
 
     def AddBook(self, request, context):
         id = str(uuid.uuid4())
         title = request.book.title
         author = request.book.author
-        new_book = books_pb2.Book(id = id, title = title, author = author)
+        new_book = books_pb2.Book(id=id, title=title, author=author)
         BOOKS.append(new_book)
-        return books_pb2.AddBookResponse(book = new_book)
+        return books_pb2.AddBookResponse(book=new_book)
 
 
 def serve():

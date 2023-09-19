@@ -15,12 +15,12 @@ class BooksServiceStub(object):
             channel: A grpc.Channel.
         """
         self.GetBooks = channel.unary_unary(
-                '/books.BooksService/GetBooks',
+                '/grpc.BooksService/GetBooks',
                 request_serializer=books__pb2.BooksRequest.SerializeToString,
                 response_deserializer=books__pb2.BooksResponse.FromString,
                 )
         self.AddBook = channel.unary_unary(
-                '/books.BooksService/AddBook',
+                '/grpc.BooksService/AddBook',
                 request_serializer=books__pb2.AddBookRequest.SerializeToString,
                 response_deserializer=books__pb2.AddBookResponse.FromString,
                 )
@@ -56,7 +56,7 @@ def add_BooksServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'books.BooksService', rpc_method_handlers)
+            'grpc.BooksService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -75,7 +75,7 @@ class BooksService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/books.BooksService/GetBooks',
+        return grpc.experimental.unary_unary(request, target, '/grpc.BooksService/GetBooks',
             books__pb2.BooksRequest.SerializeToString,
             books__pb2.BooksResponse.FromString,
             options, channel_credentials,
@@ -92,7 +92,7 @@ class BooksService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/books.BooksService/AddBook',
+        return grpc.experimental.unary_unary(request, target, '/grpc.BooksService/AddBook',
             books__pb2.AddBookRequest.SerializeToString,
             books__pb2.AddBookResponse.FromString,
             options, channel_credentials,

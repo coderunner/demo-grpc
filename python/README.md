@@ -8,12 +8,13 @@ La première fois, exécuter
 python3 -m venv venv
 . venv/bin/activate
 pip install grpcio
+pip install grpcio-tools
 ```
 
 Pour regénérer le code python correspondant aux définitions protobuf:
 
 ```
-python3 -m grpc_tools.protoc -Iprotos --python_out=. --grpc_python_out=. protos/books.proto
+python3 -m grpc_tools.protoc -Iprotos --python_out=. --grpc_python_out=. --proto_path=.. protos/books.proto
 ```
 
 Ensuite, on peut démarrer le serveur avec la commande
