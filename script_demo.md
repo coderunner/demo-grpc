@@ -1,0 +1,9 @@
+- Montrer le fichier proto
+- Montrer le code généré Java - ./mvnw compile
+- Montrer l'implémentation serveur
+- Montrer l'implémentation client
+- Exécuter le serveur - ./mvnw compile exec:java -Dexec.mainClass="org.inf5190.books.server.BookServer"
+- Exécuter le client - ./mvnw compile exec:java -Dexec.mainClass="org.inf5190.books.client.BookClient"
+- Tester l'interop avec le client python
+  - . venv/bin/activate
+  - python3 -i books_client.py
