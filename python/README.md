@@ -14,7 +14,7 @@ pip install grpcio-tools
 Pour regénérer le code python correspondant aux définitions protobuf:
 
 ```
-python3 -m grpc_tools.protoc -Iprotos --python_out=. --grpc_python_out=. --proto_path=.. protos/books.proto
+python3 -m grpc_tools.protoc --proto_path=./proto --python_out=. --grpc_python_out=. proto/books.proto
 ```
 
 Ensuite, on peut démarrer le serveur avec la commande
